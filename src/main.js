@@ -26,12 +26,13 @@ form.addEventListener("submit", event => {
 
   if (query === "") {
     iziToast.error({
-      title: "Error",
       message: "Please enter a search query.",
       position: "topRight",
       backgroundColor: "#ef4040",
       titleColor: "#fff",
       messageColor: "#fff",
+      class: "error-icon",
+      iconUrl: iconError,
     });
     return;
   }
@@ -43,12 +44,12 @@ form.addEventListener("submit", event => {
       .then(data => {
         if (data.hits.length === 0) {
           iziToast.error({
-            title: "Error",
-            message: "Sorry, there are no images matching your search query. Please try again!",
+            message: "Sorry, there are no images matching<br/> your search query. Please try again!",
             position: "topRight",
             backgroundColor: "#ef4040",
             titleColor: "#fff",
             messageColor: "#fff",
+            class: "error-icon",
             iconUrl: iconError,
           });
           return;
@@ -60,12 +61,13 @@ form.addEventListener("submit", event => {
       })
       .catch(error => {
         iziToast.error({
-          title: "Error",
           message: "Something went wrong. Please try again later!",
           position: "topRight",
           backgroundColor: "#ef4040",
           titleColor: "#fff",
           messageColor: "#fff",
+          class: "error-icon",
+          iconUrl: iconError,
         });
         console.log("Fetch error:", error);
       })
